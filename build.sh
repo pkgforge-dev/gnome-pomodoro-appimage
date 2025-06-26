@@ -100,7 +100,7 @@ echo '#!/bin/sh
 CURRENTDIR="$(cd "${0%/*}" && echo "$PWD")"
 DATADIR="${XDG_DATA_HOME:-$HOME/.local/share}"
 mkdir -p "${DATADIR}"/gnome-shell/extensions
-cp -r "${CURRENTDIR}"/pomodoro@arun.codito.in "${DATADIR}"/gnome-shell/extensions/pomodoro@arun.codito.in
+cp -r "${CURRENTDIR}"/pomodoro@arun.codito.in "${DATADIR}"/gnome-shell/extensions
 sed -i -e "s|/usr|${CURRENTDIR}|g" "${DATADIR}"/gnome-shell/extensions/pomodoro@arun.codito.in/config.js
 exec "${CURRENTDIR}"/bin/gnome-pomodoro "${@}"' >./AppRun
 
