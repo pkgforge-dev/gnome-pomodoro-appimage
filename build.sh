@@ -96,12 +96,13 @@ cp -rv /usr/share/gnome-shell/extensions/pomodoro@arun.codito.in ./
 
 xvfb-run -a -- sharun l -p -v -e -s -k /usr/bin/gnome-pomodoro
 
-echo '#!/bin/sh' >>./AppRun
-echo 'CURRENTDIR="$(cd "${0%/*}" && echo "$PWD")"' >>./AppRun
-echo 'DATADIR="${XDG_DATA_HOME:-$HOME/.local/share}"' >>./AppRun
-echo 'mkdir -p "${DATADIR}"/gnome-shell/extensions' >>./AppRun
-echo 'cp -r "${CURRENTDIR}"/pomodoro@arun.codito.in "$DATADIR"/gnome-shell/extensions/pomodoro@arun.codito.in' >>./AppRun
-echo 'exec "${CURRENTDIR}"/bin/gnome-pomodoro "${@}"' >>./AppRun
+echo '#!/bin/sh
+CURRENTDIR="$(cd "${0%/*}" && echo "$PWD")"
+DATADIR="${XDG_DATA_HOME:-$HOME/.local/share}"
+mkdir -p "${DATADIR}"/gnome-shell/extensions
+cp -r "${CURRENTDIR}"/pomodoro@arun.codito.in "${DATADIR}"/gnome-shell/extensions/pomodoro@arun.codito.in
+sed -i -e "s|/usr|${CURRENTDIR}|g" "${DATADIR}"/gnome-shell/extensions/pomodoro@arun.codito.in/config.js
+exec "${CURRENTDIR}"/bin/gnome-pomodoro "${@}"' >./AppRun
 
 chmod a+x ./AppRun
 
