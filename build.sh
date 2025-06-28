@@ -98,7 +98,7 @@ xvfb-run -a -- sharun l -p -v -e -s -k /usr/bin/gnome-pomodoro
 
 echo '#!/bin/sh
 CURRENTDIR="$(cd "${0%/*}" && echo "$PWD")"
-if command -v gnome-shell &> /dev/null; then
+if command -v gnome-shell 1>/dev/null; then
   DATADIR="${XDG_DATA_HOME:-$HOME/.local/share}"
   mkdir -p "${DATADIR}"/gnome-shell/extensions
   cp -r "${CURRENTDIR}"/pomodoro@arun.codito.in "${DATADIR}"/gnome-shell/extensions
