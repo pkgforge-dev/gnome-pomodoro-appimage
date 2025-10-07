@@ -69,7 +69,7 @@ jobs:
           name: gnome-pomodoro-appimage-x86_64
 
       - name: Gnome Pomodoro Continous Release
-        uses: softprops/action-gh-release@v2.3.3
+        uses: softprops/action-gh-release@v2.4.0
         with:
           name: "${{ needs.build.outputs.VERSION }}"
           tag_name: ${{ needs.build.outputs.VERSION }}
